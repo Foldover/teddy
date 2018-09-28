@@ -3,4 +3,5 @@ project(teddy C)
 
 set(CMAKE_C_STANDARD 11)
 
-add_executable(teddy main.c)
+add_executable(teddy main.c teddymap.h)
+target_link_libraries(teddy m)

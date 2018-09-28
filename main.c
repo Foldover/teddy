@@ -14,6 +14,8 @@
 #include <time.h>
 #include <string.h>
 
+#include "teddymap.h"
+
 
 /*** defines ***/
 
@@ -705,6 +707,27 @@ void initEditor() {
     if (getWindowSize(&E.screenRows, &E.screenCols) == -1)
         die("getWindowSize");
     E.screenRows -= 2;
+}
+
+void printHello() {
+    const char *message = "hello\r\n";
+    write(STDOUT_FILENO, message, strlen(message));
+}
+
+void printWorld() {
+    const char *message = "world\r\n";
+    write(STDOUT_FILENO, message, strlen(message));
+}
+
+void printGreeting() {
+    const char *message = "how are you?\r\n";
+    write(STDOUT_FILENO, message, strlen(message));
+}
+
+char* editorKeyToString(enum editorKey key) {
+    static char buf[12];
+    sprintf(buf, "%d", key);
+    return buf;
 }
 
 int main(int argc, char *argv[]) {
